@@ -21,17 +21,20 @@ const NavBar = ({ title }: Props) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Link href="/" passHref>
+          <Link href="/#home" passHref>
             <Nav.Link>{t(TranslationResource.home)}</Nav.Link>
           </Link>
-          <Link href="/tags" passHref>
-            <Nav.Link>{t(TranslationResource.tags)}</Nav.Link>
-          </Link>
-          <Link href="/posts/search" passHref>
-            <Nav.Link>{t(TranslationResource.search_post)}</Nav.Link>
-          </Link>
-          <Link href="/about" passHref>
+          <Link href="/#aboutme" passHref>
             <Nav.Link>{t(TranslationResource.about)}</Nav.Link>
+          </Link>
+          <Link href="/#skills" passHref>
+            <Nav.Link>{t(TranslationResource.skills)}</Nav.Link>
+          </Link>
+          <Link href="/#projects" passHref>
+            <Nav.Link>{t(TranslationResource.projects)}</Nav.Link>
+          </Link>
+          <Link href="/#contact" passHref>
+            <Nav.Link>{t(TranslationResource.contact)}</Nav.Link>
           </Link>
         </Nav>
         <LanguagePicker />
