@@ -1,22 +1,15 @@
 import PostPreview from './post-preview';
 import Post from '../types/post';
-import { POST_PER_PAGE } from '../lib/constants';
 import Container from './container';
-import PostPagination from './post-pagination';
 import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../enums/translationResource';
 
 type Props = {
   posts: Post[];
-  actualPage: number;
 };
 
-const PostsList = ({ posts, actualPage }: Props) => {
+const PostsList = ({ posts }: Props) => {
   const { t, lang } = useTranslation('common');
-
-  const initialPosition = (actualPage - 1) * POST_PER_PAGE;
-  const finalPosition = initialPosition + POST_PER_PAGE;
-  const visiblePosts = posts.slice(initialPosition, finalPosition);
 
   if (0 >= posts.length) {
     return (
@@ -34,7 +27,7 @@ const PostsList = ({ posts, actualPage }: Props) => {
     <section>
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 mb-32">
-          {visiblePosts.map((post) => (
+          {posts.map((post) => (
             <PostPreview
               key={post.slug}
               title={post.title}
@@ -47,7 +40,6 @@ const PostsList = ({ posts, actualPage }: Props) => {
             />
           ))}
         </div>
-        <PostPagination actualPage={actualPage} totalPosts={posts.length} />
       </Container>
     </section>
   );

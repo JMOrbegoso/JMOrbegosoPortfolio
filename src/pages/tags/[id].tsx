@@ -63,7 +63,7 @@ const Tag = ({ author, tagTitle, posts }: Props) => {
               />
               <meta property="og:image" content={author.picture} />
             </Head>
-            <PostsList posts={posts} actualPage={1} />
+            <PostsList posts={posts} />
           </>
         )}
       </Container>

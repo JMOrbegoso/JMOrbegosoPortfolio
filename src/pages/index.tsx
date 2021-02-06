@@ -41,7 +41,7 @@ const Index = ({ author, posts }: Props) => {
           <meta property="og:description" content={WEB_DESCRIPTION} />
           <meta property="og:image" content={author.picture} />
         </Head>
-        <PostsList posts={posts} actualPage={1} />
+        <PostsList posts={posts} />
       </Layout>
     </>
   );
