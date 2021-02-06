@@ -15,5 +15,17 @@
   "search_post": "Search post",
   "words_to_find": "Search",
   "search_term": "Search Term",
-  "search_results": "Search Results"
+  "search_results": "Search Results",
+  "welcome_to_my_portfolio": "Welcome to my Portfolio",
+  "skills": "Skills",
+  "projects": "Projects",
+  "email": "Email:",
+  "email_placeholder": "Enter your email here.",
+  "message": "Message",
+  "message_placeholder": "Enter your message here.",
+  "submit": "Submit",
+  "email_sent_successfully": "Message sent successfully",
+  "i_will_contact_you_shortly": "I'll get in touch with you shortly.",
+  "error_sending_email": "Error sending the message",
+  "an_error_occurred_sending_email": "An error occurred while sending your message."
 }

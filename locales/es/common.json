@@ -15,5 +15,17 @@
   "search_post": "Buscar publicación",
   "words_to_find": "Buscar",
   "search_term": "Término de búsqueda",
-  "search_results": "Resultados de la búsqueda"
+  "search_results": "Resultados de la búsqueda",
+  "welcome_to_my_portfolio": "Bienvenido a mi Portafolio",
+  "skills": "Habilidades",
+  "projects": "Proyectos ",
+  "email": "Email:",
+  "email_placeholder": "Ingrese su email aquí.",
+  "message": "Message",
+  "message_placeholder": "Ingrese su mensaje aquí.",
+  "submit": "Enviar",
+  "email_sent_successfully": "Mensaje enviado correctamente",
+  "i_will_contact_you_shortly": "Me pondré en contacto contigo en breve.",
+  "error_sending_email": "Error enviando el mensaje",
+  "an_error_occurred_sending_email": "Ocurrió un error al enviar su mensaje."
 }
