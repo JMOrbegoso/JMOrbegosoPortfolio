@@ -3,7 +3,6 @@ import DateFormatter from './date-formatter';
 import CoverImage from './cover-image';
 import PageHeader from './page-header';
 import Author from '../types/author';
-import ReadTime from './read-time';
 
 type Props = {
   title: string;
@@ -39,9 +38,6 @@ const PostHeader = ({ title, coverImage, date, content, author }: Props) => {
           <div className="row">
             <div className="col-6 text-left">
               <DateFormatter dateString={date} />
-            </div>
-            <div className="col-6 text-right">
-              <ReadTime content={content} />
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { PostTag as PostTagEnum } from '../enums/postTag';
 import PostTags from './post-tags';
 import CoverImage from './cover-image';
-import ReadTime from './read-time';
 
 type Props = {
   title: string;
@@ -35,9 +34,6 @@ const PostPreview = ({
         <div className="row">
           <div className="col-6 text-left">
             <DateFormatter dateString={date} />
-          </div>
-          <div className="col-6 text-right">
-            <ReadTime content={content} />
           </div>
         </div>
       </div>
