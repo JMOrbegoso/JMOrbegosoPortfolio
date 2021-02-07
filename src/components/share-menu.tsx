@@ -8,10 +8,10 @@ import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../enums/translationResource';
 
 type Props = {
-  post: Project;
+  project: Project;
 };
 
-const ShareMenu = ({ post }: Props) => {
+const ShareMenu = ({ project }: Props) => {
   const router = useRouter();
   const { t, lang } = useTranslation('common');
 
@@ -28,22 +28,22 @@ const ShareMenu = ({ post }: Props) => {
         </div>
         <div className="col-md-12 text-center">
           <ShareButton
-            title={post.title}
+            title={project.title}
             url={shareURL}
             shareType={ShareType.Twitter}
           />
           <ShareButton
-            title={post.title}
+            title={project.title}
             url={shareURL}
             shareType={ShareType.Facebook}
           />
           <ShareButton
-            title={post.title}
+            title={project.title}
             url={shareURL}
             shareType={ShareType.Telegram}
           />
           <ShareButton
-            title={post.title}
+            title={project.title}
             url={shareURL}
             shareType={ShareType.LinkedIn}
           />
