@@ -8,7 +8,7 @@ import { WEB_NAME } from '../lib/constants';
 import { Tag } from '../enums/tag';
 import Author from '../types/author';
 import PageHeader from '../components/page-header';
-import PostTags from '../components/post-tags';
+import ProjectTags from '../components/project-tags';
 import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../enums/translationResource';
 
@@ -31,7 +31,7 @@ const Tags = ({ author, tags }: Props) => {
           </Head>
           <PageHeader>{t(TranslationResource.tags)}</PageHeader>
           <Container>
-            <PostTags tags={tags} />
+            <ProjectTags tags={tags} />
           </Container>
         </Container>
       </Layout>

@@ -1,7 +1,7 @@
 import DateFormatter from './date-formatter';
 import Link from 'next/link';
 import { Tag } from '../enums/tag';
-import PostTags from './post-tags';
+import ProjectTags from './project-tags';
 import CoverImage from './cover-image';
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
   tags: Tag[];
 };
 
-const PostPreview = ({
+const ProjectPreview = ({
   title,
   coverImage,
   date,
@@ -41,9 +41,9 @@ const PostPreview = ({
         <CoverImage slug={slug} title={title} src={coverImage} />
       </div>
       <p className="text-lg leading-relaxed mb-4 text-justify">{excerpt}</p>
-      <PostTags tags={tags} />
+      <ProjectTags tags={tags} />
     </div>
   );
 };
 
-export default PostPreview;
+export default ProjectPreview;

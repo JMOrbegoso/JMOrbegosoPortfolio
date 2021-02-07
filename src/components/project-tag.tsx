@@ -7,7 +7,7 @@ type Props = {
   tag: Tag;
 };
 
-const PostTag = ({ tag }: Props) => {
+const ProjectTag = ({ tag }: Props) => {
   const tagIconSrc = `/assets/tags/${tag}.svg`;
   const tagTitle = getTagTitle(tag);
 
@@ -29,4 +29,4 @@ const PostTag = ({ tag }: Props) => {
   );
 };
 
-export default PostTag;
+export default ProjectTag;

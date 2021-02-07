@@ -3,8 +3,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Container from '../../components/container';
-import PostBody from '../../components/post-body';
-import PostHeader from '../../components/post-header';
+import ProjectBody from '../../components/project-body';
+import ProjectHeader from '../../components/project-header';
 import Layout from '../../components/layout';
 import { getPostBySlug, getAllPosts, getAuthorData } from '../../lib/api';
 import PageHeader from '../../components/page-header';
@@ -13,7 +13,7 @@ import { URL_BASE, WEB_NAME } from '../../lib/constants';
 import markdownToHtml from '../../lib/markdownToHtml';
 import Project from '../../types/project';
 import Author from '../../types/author';
-import PostTags from '../../components/post-tags';
+import ProjectTags from '../../components/project-tags';
 import ShareMenu from '../../components/share-menu';
 import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../../enums/translationResource';
@@ -60,15 +60,15 @@ const ProjectPage = ({ author, project }: Props) => {
                 <meta property="og:description" content={project.excerpt} />
                 <meta property="og:image" content={project.ogImage.url} />
               </Head>
-              <PostHeader
+              <ProjectHeader
                 title={project.title}
                 coverImage={project.coverImage}
                 date={project.date}
                 content={project.content}
                 author={author}
               />
-              <PostBody content={project.content} />
-              <PostTags tags={project.tags} />
+              <ProjectBody content={project.content} />
+              <ProjectTags tags={project.tags} />
               <ShareMenu project={project} />
             </article>
           </>

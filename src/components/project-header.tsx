@@ -12,7 +12,7 @@ type Props = {
   author: Author;
 };
 
-const PostHeader = ({ title, coverImage, date, content, author }: Props) => {
+const ProjectHeader = ({ title, coverImage, date, content, author }: Props) => {
   return (
     <>
       <PageHeader>{title}</PageHeader>
@@ -46,4 +46,4 @@ const PostHeader = ({ title, coverImage, date, content, author }: Props) => {
   );
 };
 
-export default PostHeader;
+export default ProjectHeader;

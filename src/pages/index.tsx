@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import PostsList from '../components/posts-list';
+import ProjectsList from '../components/projects-list';
 import Layout from '../components/layout';
 import { getAuthorData, getAllPostsPreviews } from '../lib/api';
 import Head from 'next/head';
@@ -41,7 +41,7 @@ const Index = ({ author, projects }: Props) => {
           <meta property="og:description" content={WEB_DESCRIPTION} />
           <meta property="og:image" content={author.picture} />
         </Head>
-        <PostsList projects={projects} />
+        <ProjectsList projects={projects} />
       </Layout>
     </>
   );

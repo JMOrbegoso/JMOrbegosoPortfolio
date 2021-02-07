@@ -10,7 +10,7 @@ import Head from 'next/head';
 import { URL_BASE, WEB_NAME } from '../../lib/constants';
 import Project from '../../types/project';
 import Author from '../../types/author';
-import PostsList from '../../components/posts-list';
+import ProjectsList from '../../components/projects-list';
 import { getTagTitle } from '../../lib/tag-helpers';
 import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../../enums/translationResource';
@@ -67,7 +67,7 @@ const Tag = ({ author, tagTitle, projects }: Props) => {
               />
               <meta property="og:image" content={author.picture} />
             </Head>
-            <PostsList projects={projects} />
+            <ProjectsList projects={projects} />
           </>
         )}
       </Container>
