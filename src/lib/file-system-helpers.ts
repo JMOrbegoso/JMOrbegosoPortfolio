@@ -5,13 +5,13 @@ import { join } from 'path';
 export const rootDirectory = (directoryType: DirectoryType) =>
   join(
     process.cwd(),
-    directoryType === DirectoryType.Author ? '_author' : '_posts',
+    directoryType === DirectoryType.Author ? '_author' : '_projects',
   );
 
 export const localeDirectory = (directoryType: DirectoryType, locale: string) =>
   join(
     process.cwd(),
-    directoryType === DirectoryType.Author ? '_author' : '_posts',
+    directoryType === DirectoryType.Author ? '_author' : '_projects',
     locale,
   );
 
