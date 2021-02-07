@@ -5,13 +5,13 @@ import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../enums/translationResource';
 
 type Props = {
-  posts: Project[];
+  projects: Project[];
 };
 
-const PostsList = ({ posts }: Props) => {
+const PostsList = ({ projects }: Props) => {
   const { t, lang } = useTranslation('common');
 
-  if (0 >= posts.length) {
+  if (0 >= projects.length) {
     return (
       <>
         <section className="text-center">
@@ -27,16 +27,16 @@ const PostsList = ({ posts }: Props) => {
     <section>
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 mb-32">
-          {posts.map((post) => (
+          {projects.map((project) => (
             <PostPreview
-              key={post.slug}
-              title={post.title}
-              coverImage={post.coverImage}
-              date={post.date}
-              slug={post.slug}
-              excerpt={post.excerpt}
-              content={post.content}
-              tags={post.tags}
+              key={project.slug}
+              title={project.title}
+              coverImage={project.coverImage}
+              date={project.date}
+              slug={project.slug}
+              excerpt={project.excerpt}
+              content={project.content}
+              tags={project.tags}
             />
           ))}
         </div>
