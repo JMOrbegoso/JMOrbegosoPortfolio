@@ -23,7 +23,7 @@ type Props = {
   project: Project;
 };
 
-const Post = ({ author, project }: Props) => {
+const ProjectPage = ({ author, project }: Props) => {
   const router = useRouter();
   const { t, lang } = useTranslation('common');
 
@@ -78,7 +78,7 @@ const Post = ({ author, project }: Props) => {
   );
 };
 
-export default Post;
+export default ProjectPage;
 
 type Params = {
   params: {
