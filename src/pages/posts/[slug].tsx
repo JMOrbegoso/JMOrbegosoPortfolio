@@ -14,7 +14,6 @@ import markdownToHtml from '../../lib/markdownToHtml';
 import PostType from '../../types/post';
 import Author from '../../types/author';
 import PostTags from '../../components/post-tags';
-import DisqusComments from '../../components/disqus-comments';
 import ShareMenu from '../../components/share-menu';
 import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../../enums/translationResource';
@@ -71,7 +70,6 @@ const Post = ({ author, post }: Props) => {
               <PostBody content={post.content} />
               <PostTags tags={post.tags} />
               <ShareMenu post={post} />
-              <DisqusComments post={post} />
             </article>
           </>
         )}
