@@ -41,7 +41,7 @@ export function getResourceByFileName(
   return items;
 }
 
-export function getPostBySlug(
+export function getProjectBySlug(
   locale: string,
   slug: string,
   fields: string[] = [],
@@ -114,19 +114,22 @@ export function getAuthorBySlug(
   return items;
 }
 
-export function getAllPosts(locale: string, fields: string[] = []) {
-  const postsFileNames = getResourcesFileNames(DirectoryType.Projects, locale);
-  const posts = postsFileNames
+export function getAllProjects(locale: string, fields: string[] = []) {
+  const projectsFileNames = getResourcesFileNames(
+    DirectoryType.Projects,
+    locale,
+  );
+  const projects = projectsFileNames
     .map((fileName) =>
       getResourceByFileName(DirectoryType.Projects, locale, fileName, fields),
     )
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-  return posts;
+    // sort projects by date in descending order
+    .sort((project1, project2) => (project1.date > project2.date ? -1 : 1));
+  return projects;
 }
 
-export function getAllPostsPreviews(locale: string) {
-  return getAllPosts(locale, [
+export function getAllProjectsPreviews(locale: string) {
+  return getAllProjects(locale, [
     'slug',
     'title',
     'date',
@@ -159,8 +162,8 @@ export function getAuthorData(locale: string) {
 }
 
 export function getAllTags(locale: string) {
-  const allPosts = getAllPosts(locale, ['tags']);
-  const allTags = allPosts.map((p) => p.tags).flat(1);
+  const allProjects = getAllProjects(locale, ['tags']);
+  const allTags = allProjects.map((p) => p.tags).flat(1);
 
   const allUniqueTags = allTags
     .filter((item, index) => allTags.indexOf(item) === index)

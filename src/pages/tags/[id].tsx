@@ -4,7 +4,11 @@ import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Container from '../../components/container';
 import Layout from '../../components/layout';
-import { getAuthorData, getAllPostsPreviews, getAllTags } from '../../lib/api';
+import {
+  getAuthorData,
+  getAllProjectsPreviews,
+  getAllTags,
+} from '../../lib/api';
 import PageHeader from '../../components/page-header';
 import Head from 'next/head';
 import { URL_BASE, WEB_NAME } from '../../lib/constants';
@@ -89,7 +93,7 @@ type Params = {
 
 export const getStaticProps = async ({ params, locale }: Params) => {
   const author = getAuthorData(locale);
-  const projects = getAllPostsPreviews(locale).filter((p) =>
+  const projects = getAllProjectsPreviews(locale).filter((p) =>
     p.tags.includes(params.id),
   );
 
@@ -109,16 +113,16 @@ export async function getStaticPaths({ locales }: { locales: string[] }) {
 
   locales.forEach((locale) => {
     const allTags = getAllTags(locale);
-    const paginatedPostsByTags: {
+    const projectsByTags: {
       tag: string;
       locale: string;
     }[] = [];
 
     allTags.forEach((tag) => {
-      paginatedPostsByTags.push({ tag, locale });
+      projectsByTags.push({ tag, locale });
     });
 
-    const pagePath = paginatedPostsByTags.map((pt) => {
+    const pagePath = projectsByTags.map((pt) => {
       return {
         locale: pt.locale,
         params: {

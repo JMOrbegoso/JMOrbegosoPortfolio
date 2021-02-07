@@ -6,7 +6,7 @@ import Container from '../../components/container';
 import ProjectBody from '../../components/project-body';
 import ProjectHeader from '../../components/project-header';
 import Layout from '../../components/layout';
-import { getPostBySlug, getAllPosts, getAuthorData } from '../../lib/api';
+import { getProjectBySlug, getAllProjects, getAuthorData } from '../../lib/api';
 import PageHeader from '../../components/page-header';
 import Head from 'next/head';
 import { URL_BASE, WEB_NAME } from '../../lib/constants';
@@ -91,7 +91,7 @@ type Params = {
 
 export async function getStaticProps({ params, locale }: Params) {
   const author = getAuthorData(locale);
-  const project = getPostBySlug(locale, params.slug, [
+  const project = getProjectBySlug(locale, params.slug, [
     'title',
     'date',
     'slug',
@@ -117,16 +117,16 @@ export async function getStaticPaths({ locales }: { locales: string[] }) {
   const paths: { locale: string; params: { slug: string } }[] = [];
 
   locales.forEach((locale) => {
-    const postPath = getAllPosts(locale, ['slug']).map((post) => {
+    const projectPath = getAllProjects(locale, ['slug']).map((project) => {
       return {
         locale: locale,
         params: {
-          slug: post.slug,
+          slug: project.slug,
         },
       };
     });
 
-    paths.push(...postPath);
+    paths.push(...projectPath);
   });
 
   return {

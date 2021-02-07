@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import ProjectsList from '../components/projects-list';
 import Layout from '../components/layout';
-import { getAuthorData, getAllPostsPreviews } from '../lib/api';
+import { getAuthorData, getAllProjectsPreviews } from '../lib/api';
 import Head from 'next/head';
 import { URL_BASE, WEB_NAME, WEB_DESCRIPTION } from '../lib/constants';
 import Project from '../types/project';
@@ -63,7 +63,7 @@ export const getStaticProps = async ({ locale }: Params) => {
   await generateBlogCache();
 
   const author = getAuthorData(locale);
-  const projects = getAllPostsPreviews(locale);
+  const projects = getAllProjectsPreviews(locale);
 
   return {
     props: {

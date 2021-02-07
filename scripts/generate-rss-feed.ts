@@ -4,7 +4,7 @@ import {
   URL_BASE,
   COPYRIGHT,
 } from '../src/lib/constants';
-import { getAuthorData, getAllPostsPreviews } from '../src/lib/api';
+import { getAuthorData, getAllProjectsPreviews } from '../src/lib/api';
 import { Feed } from 'feed';
 import markdownToHtml from '../src/lib/markdownToHtml';
 import { writeFile } from '../src/lib/file-system-helpers';
@@ -15,7 +15,7 @@ async function generateRssFeed() {
   }
 
   const author = getAuthor();
-  const posts = getAllPostsPreviews('en');
+  const projects = getAllProjectsPreviews('en');
 
   const baseUrl = URL_BASE;
 
@@ -37,19 +37,19 @@ async function generateRssFeed() {
   });
 
   const entries = await Promise.all(
-    posts.map(async (post) => {
-      const url = `${baseUrl}/post/${post.slug}`;
+    projects.map(async (project) => {
+      const url = `${baseUrl}/post/${project.slug}`;
 
       return {
         id: url,
         link: url,
-        title: post.title,
-        description: post.excerpt,
-        content: await markdownToHtml(post.content),
+        title: project.title,
+        description: project.excerpt,
+        content: await markdownToHtml(project.content),
         author: [author],
         contributor: [author],
-        date: new Date(post.date),
-        image: `${baseUrl}${post.coverImage}`,
+        date: new Date(project.date),
+        image: `${baseUrl}${project.coverImage}`,
       };
     }),
   );

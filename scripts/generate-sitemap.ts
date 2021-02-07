@@ -1,5 +1,5 @@
 import { URL_BASE } from '../src/lib/constants';
-import { getAllPosts, getAllTags } from '../src/lib/api';
+import { getAllProjects, getAllTags } from '../src/lib/api';
 import globby from 'globby';
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { Readable } from 'stream';
@@ -36,10 +36,10 @@ async function generateSitemap() {
     })
     .filter((page) => !blocklist.includes(page.url));
 
-  // post routes
-  const posts = getPosts();
-  const postLinks = posts.map((post) => ({
-    url: `posts/${post.slug}`,
+  // Project routes
+  const projects = getProjects();
+  const projectLinks = projects.map((project) => ({
+    url: `posts/${project.slug}`,
     changefreq: 'daily',
     priority: 0.7,
   }));
@@ -52,7 +52,7 @@ async function generateSitemap() {
     priority: 0.7,
   }));
 
-  const links = [...pageLinks, ...postLinks, ...tagLinks];
+  const links = [...pageLinks, ...projectLinks, ...tagLinks];
   const stream = new SitemapStream({ hostname: baseUrl });
 
   const xml = await streamToPromise(
@@ -64,14 +64,16 @@ async function generateSitemap() {
 
 export default generateSitemap;
 
-function getPosts() {
-  return getAllPosts('en', [
+function getProjects() {
+  return getAllProjects('en', [
     'title',
     'date',
     'slug',
     'excerpt',
     'content',
-  ]).sort((post1: any, post2: any) => (post1.date > post2.date ? -1 : 1));
+  ]).sort((project1: any, project2: any) =>
+    project1.date > project2.date ? -1 : 1,
+  );
 }
 
 function getTags() {
