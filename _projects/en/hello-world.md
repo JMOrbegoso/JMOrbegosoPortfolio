@@ -1,10 +1,10 @@
 ---
 title: 'Learn How to Pre-render Pages Using Static Generation with Next.js'
 excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
-coverImage: '/assets/posts/hello-world/cover.jpg'
+coverImage: '/assets/projects/hello-world/cover.jpg'
 date: '2020-03-14T05:35:07.322Z'
 ogImage:
-  url: '/assets/posts/hello-world/cover.jpg'
+  url: '/assets/projects/hello-world/cover.jpg'
 tags:
   - wsl
   - angular
