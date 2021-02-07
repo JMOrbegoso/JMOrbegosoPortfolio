@@ -20,14 +20,14 @@ import TranslationResource from '../../enums/translationResource';
 
 type Props = {
   author: Author;
-  post: Project;
+  project: Project;
 };
 
-const Post = ({ author, post }: Props) => {
+const Post = ({ author, project }: Props) => {
   const router = useRouter();
   const { t, lang } = useTranslation('common');
 
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !project?.slug) {
     return <ErrorPage statusCode={404} />;
   }
 
@@ -41,35 +41,35 @@ const Post = ({ author, post }: Props) => {
             <article className="mb-32">
               <Head>
                 <title>
-                  {post.title} - {WEB_NAME}
+                  {project.title} - {WEB_NAME}
                 </title>
-                <meta property="description" content={post.excerpt} />
+                <meta property="description" content={project.excerpt} />
                 <meta
                   property="author"
                   content={`${author.firstname} ${author.lastname}`}
                 />
-                <meta name="keywords" content={`${[...post.tags]}`} />
-                <meta name="date" content={post.date} />
+                <meta name="keywords" content={`${[...project.tags]}`} />
+                <meta name="date" content={project.date} />
 
                 <meta
                   property="og:url"
                   content={`${URL_BASE}${router.asPath}`}
                 />
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content={post.title} />
-                <meta property="og:description" content={post.excerpt} />
-                <meta property="og:image" content={post.ogImage.url} />
+                <meta property="og:title" content={project.title} />
+                <meta property="og:description" content={project.excerpt} />
+                <meta property="og:image" content={project.ogImage.url} />
               </Head>
               <PostHeader
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                content={post.content}
+                title={project.title}
+                coverImage={project.coverImage}
+                date={project.date}
+                content={project.content}
                 author={author}
               />
-              <PostBody content={post.content} />
-              <PostTags tags={post.tags} />
-              <ShareMenu post={post} />
+              <PostBody content={project.content} />
+              <PostTags tags={project.tags} />
+              <ShareMenu project={project} />
             </article>
           </>
         )}
@@ -91,8 +91,7 @@ type Params = {
 
 export async function getStaticProps({ params, locale }: Params) {
   const author = getAuthorData(locale);
-
-  const post = getPostBySlug(locale, params.slug, [
+  const project = getPostBySlug(locale, params.slug, [
     'title',
     'date',
     'slug',
@@ -101,13 +100,13 @@ export async function getStaticProps({ params, locale }: Params) {
     'coverImage',
     'tags',
   ]);
-  const content = await markdownToHtml(post.content || '');
+  const content = await markdownToHtml(project.content || '');
 
   return {
     props: {
       author,
-      post: {
-        ...post,
+      project: {
+        ...project,
         content,
       },
     },
