@@ -15,10 +15,10 @@ import useTranslation from 'next-translate/useTranslation';
 
 type Props = {
   author: Author;
-  posts: Project[];
+  projects: Project[];
 };
 
-const Index = ({ author, posts }: Props) => {
+const Index = ({ author, projects }: Props) => {
   const { t, lang } = useTranslation('common');
 
   return (
@@ -41,7 +41,7 @@ const Index = ({ author, posts }: Props) => {
           <meta property="og:description" content={WEB_DESCRIPTION} />
           <meta property="og:image" content={author.picture} />
         </Head>
-        <PostsList posts={posts} />
+        <PostsList projects={projects} />
       </Layout>
     </>
   );
@@ -63,12 +63,12 @@ export const getStaticProps = async ({ locale }: Params) => {
   await generateBlogCache();
 
   const author = getAuthorData(locale);
-  const posts = getAllPostsPreviews(locale);
+  const projects = getAllPostsPreviews(locale);
 
   return {
     props: {
       author,
-      posts: posts,
+      projects,
     },
   };
 };
