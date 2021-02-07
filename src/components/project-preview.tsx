@@ -26,7 +26,7 @@ const ProjectPreview = ({
   return (
     <div className="my-3">
       <h3 className="text-3xl mb-3 leading-snug text-center">
-        <Link as={`/posts/${slug}`} href="/posts/[slug]">
+        <Link as={`/projects/${slug}`} href="/projects/[slug]">
           <a className="hover:underline">{title}</a>
         </Link>
       </h3>

@@ -38,7 +38,7 @@ async function generateRssFeed() {
 
   const entries = await Promise.all(
     projects.map(async (project) => {
-      const url = `${baseUrl}/post/${project.slug}`;
+      const url = `${baseUrl}/projects/${project.slug}`;
 
       return {
         id: url,

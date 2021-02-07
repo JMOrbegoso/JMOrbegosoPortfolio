@@ -39,7 +39,7 @@ async function generateSitemap() {
   // Project routes
   const projects = getProjects();
   const projectLinks = projects.map((project) => ({
-    url: `posts/${project.slug}`,
+    url: `projects/${project.slug}`,
     changefreq: 'daily',
     priority: 0.7,
   }));

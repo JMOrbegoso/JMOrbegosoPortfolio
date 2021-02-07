@@ -63,7 +63,7 @@ const writeBlogCacheFiles = (
 ) => {
   const folderPath =
     directoryType === DirectoryType.Projects
-      ? './public/blog-cache/posts'
+      ? './public/blog-cache/projects'
       : './public/blog-cache/author';
 
   collection.forEach((element) => {
