@@ -4,13 +4,6 @@ import matter from 'gray-matter';
 import { getResourcesFileNames, localeDirectory } from './file-system-helpers';
 import { DirectoryType } from '../enums/directoryType';
 
-function getPostFullName(locale: string, slug: string) {
-  const postsFiles = getResourcesFileNames(DirectoryType.Posts, locale);
-  const regex = new RegExp(`([0-9]{4}-[0-9]{2}-[0-9]{2}-${slug}.md)`);
-  const post = postsFiles.find((postFile) => regex.test(postFile));
-  return post;
-}
-
 export function getResourceByFileName(
   directoryType: DirectoryType,
   locale: string,
@@ -34,7 +27,7 @@ export function getResourceByFileName(
   // Ensure only the minimal needed data is exposed
   fields.forEach((field) => {
     if (field === 'slug') {
-      items[field] = realSlug.slice('xxxx-xx-xx-'.length);
+      items[field] = realSlug;
     }
     if (field === 'content') {
       items[field] = content;
@@ -54,11 +47,11 @@ export function getPostBySlug(
   fields: string[] = [],
 ) {
   const realSlug = slug.replace(/\.md$/, '');
-  const fullName = getPostFullName(locale, slug);
-  if (!fullName) {
-    return {};
-  }
-  const fullPath = join(localeDirectory(DirectoryType.Posts, locale), fullName);
+  const fullPath = join(
+    localeDirectory(DirectoryType.Posts, locale),
+    `${realSlug}.md`,
+  );
+
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
