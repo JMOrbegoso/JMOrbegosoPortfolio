@@ -1,6 +1,6 @@
 import DateFormatter from './date-formatter';
 import Link from 'next/link';
-import { PostTag as PostTagEnum } from '../enums/postTag';
+import { Tag } from '../enums/tag';
 import PostTags from './post-tags';
 import CoverImage from './cover-image';
 
@@ -11,7 +11,7 @@ type Props = {
   excerpt: string;
   slug: string;
   content: string;
-  tags: PostTagEnum[];
+  tags: Tag[];
 };
 
 const PostPreview = ({
