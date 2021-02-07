@@ -1,4 +1,4 @@
 export enum DirectoryType {
   Author,
-  Posts,
+  Projects,
 }

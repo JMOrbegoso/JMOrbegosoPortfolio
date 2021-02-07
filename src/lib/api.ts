@@ -48,7 +48,7 @@ export function getPostBySlug(
 ) {
   const realSlug = slug.replace(/\.md$/, '');
   const fullPath = join(
-    localeDirectory(DirectoryType.Posts, locale),
+    localeDirectory(DirectoryType.Projects, locale),
     `${realSlug}.md`,
   );
 
@@ -115,10 +115,10 @@ export function getAuthorBySlug(
 }
 
 export function getAllPosts(locale: string, fields: string[] = []) {
-  const postsFileNames = getResourcesFileNames(DirectoryType.Posts, locale);
+  const postsFileNames = getResourcesFileNames(DirectoryType.Projects, locale);
   const posts = postsFileNames
     .map((fileName) =>
-      getResourceByFileName(DirectoryType.Posts, locale, fileName, fields),
+      getResourceByFileName(DirectoryType.Projects, locale, fileName, fields),
     )
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));

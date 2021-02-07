@@ -9,7 +9,7 @@ import { mkdirSync } from 'fs';
 async function generateBlogCache() {
   console.log('Generating blog cache…');
 
-  generateBlogCacheFiles(DirectoryType.Posts, [
+  generateBlogCacheFiles(DirectoryType.Projects, [
     'slug',
     'title',
     'date',
@@ -62,7 +62,7 @@ const writeBlogCacheFiles = (
   collection: { locale: string; fileContent: string }[],
 ) => {
   const folderPath =
-    directoryType === DirectoryType.Posts
+    directoryType === DirectoryType.Projects
       ? './public/blog-cache/posts'
       : './public/blog-cache/author';
 
