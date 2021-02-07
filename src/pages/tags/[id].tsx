@@ -18,10 +18,10 @@ import TranslationResource from '../../enums/translationResource';
 type Props = {
   author: Author;
   tagTitle: string;
-  posts: Project[];
+  projects: Project[];
 };
 
-const Tag = ({ author, tagTitle, posts }: Props) => {
+const Tag = ({ author, tagTitle, projects }: Props) => {
   const router = useRouter();
   const { t, lang } = useTranslation('common');
 
@@ -63,7 +63,7 @@ const Tag = ({ author, tagTitle, posts }: Props) => {
               />
               <meta property="og:image" content={author.picture} />
             </Head>
-            <PostsList posts={posts} />
+            <PostsList projects={projects} />
           </>
         )}
       </Container>
@@ -85,7 +85,7 @@ type Params = {
 
 export const getStaticProps = async ({ params, locale }: Params) => {
   const author = getAuthorData(locale);
-  const posts = getAllPostsPreviews(locale).filter((p) =>
+  const projects = getAllPostsPreviews(locale).filter((p) =>
     p.tags.includes(params.id),
   );
 
@@ -94,7 +94,7 @@ export const getStaticProps = async ({ params, locale }: Params) => {
   return {
     props: {
       author,
-      posts,
+      projects,
       tagTitle,
     },
   };
