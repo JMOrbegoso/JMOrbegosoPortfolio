@@ -16,7 +16,7 @@ const PostsList = ({ projects }: Props) => {
       <>
         <section className="text-center">
           <Container>
-            <h1>{t(TranslationResource.no_posts_found)}</h1>
+            <h1>{t(TranslationResource.no_projects_found)}</h1>
           </Container>
         </section>
       </>

@@ -21,7 +21,7 @@ const ShareMenu = ({ project }: Props) => {
     <Container>
       <div className="row my-5">
         <div className="col-md-12 text-center">
-          {t(TranslationResource.did_you_like_the_post)}
+          {t(TranslationResource.did_you_like_the_project)}
         </div>
         <div className="col-md-12 text-center">
           {t(TranslationResource.share_on_social_networks)}

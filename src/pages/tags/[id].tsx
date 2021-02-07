@@ -32,7 +32,7 @@ const Tag = ({ author, tagTitle, projects }: Props) => {
     <Layout author={author}>
       <Container>
         <PageHeader>
-          {t(TranslationResource.posts_by_tag)} - {tagTitle}
+          {t(TranslationResource.projects_by_tag)} - {tagTitle}
         </PageHeader>
         {router.isFallback ? (
           <PageHeader>{t(TranslationResource.loading)}</PageHeader>
@@ -45,7 +45,9 @@ const Tag = ({ author, tagTitle, projects }: Props) => {
 
               <meta
                 property="description"
-                content={`${t(TranslationResource.posts_by_tag)} - ${tagTitle}`}
+                content={`${t(
+                  TranslationResource.projects_by_tag,
+                )} - ${tagTitle}`}
               />
               <meta
                 property="author"
@@ -59,7 +61,9 @@ const Tag = ({ author, tagTitle, projects }: Props) => {
               <meta property="og:title" content={`${tagTitle} - ${WEB_NAME}`} />
               <meta
                 property="og:description"
-                content={`${t(TranslationResource.posts_by_tag)} - ${tagTitle}`}
+                content={`${t(
+                  TranslationResource.projects_by_tag,
+                )} - ${tagTitle}`}
               />
               <meta property="og:image" content={author.picture} />
             </Head>
