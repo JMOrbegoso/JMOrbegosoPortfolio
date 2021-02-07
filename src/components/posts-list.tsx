@@ -1,11 +1,11 @@
 import PostPreview from './post-preview';
-import Post from '../types/post';
+import Project from '../types/project';
 import Container from './container';
 import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../enums/translationResource';
 
 type Props = {
-  posts: Post[];
+  posts: Project[];
 };
 
 const PostsList = ({ posts }: Props) => {

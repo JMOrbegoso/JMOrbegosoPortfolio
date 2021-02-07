@@ -1,6 +1,6 @@
 import { Tag } from '../enums/tag';
 
-type PostType = {
+type Project = {
   slug: string;
   title: string;
   date: string;
@@ -13,4 +13,4 @@ type PostType = {
   tags: Tag[];
 };
 
-export default PostType;
+export default Project;

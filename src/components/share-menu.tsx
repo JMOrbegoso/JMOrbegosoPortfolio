@@ -1,4 +1,4 @@
-import PostType from '../types/post';
+import Project from '../types/project';
 import { useRouter } from 'next/router';
 import Container from './container';
 import ShareButton from './share-button';
@@ -8,7 +8,7 @@ import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../enums/translationResource';
 
 type Props = {
-  post: PostType;
+  post: Project;
 };
 
 const ShareMenu = ({ post }: Props) => {

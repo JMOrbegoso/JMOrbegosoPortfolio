@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import { getAuthorData, getAllPostsPreviews } from '../lib/api';
 import Head from 'next/head';
 import { URL_BASE, WEB_NAME, WEB_DESCRIPTION } from '../lib/constants';
-import Post from '../types/post';
+import Project from '../types/project';
 import Author from '../types/author';
 import generateRssFeed from '../../scripts/generate-rss-feed';
 import generateSitemap from '../../scripts/generate-sitemap';
@@ -15,7 +15,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 type Props = {
   author: Author;
-  posts: Post[];
+  posts: Project[];
 };
 
 const Index = ({ author, posts }: Props) => {

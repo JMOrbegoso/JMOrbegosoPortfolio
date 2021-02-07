@@ -11,7 +11,7 @@ import PageHeader from '../../components/page-header';
 import Head from 'next/head';
 import { URL_BASE, WEB_NAME } from '../../lib/constants';
 import markdownToHtml from '../../lib/markdownToHtml';
-import PostType from '../../types/post';
+import Project from '../../types/project';
 import Author from '../../types/author';
 import PostTags from '../../components/post-tags';
 import ShareMenu from '../../components/share-menu';
@@ -20,7 +20,7 @@ import TranslationResource from '../../enums/translationResource';
 
 type Props = {
   author: Author;
-  post: PostType;
+  post: Project;
 };
 
 const Post = ({ author, post }: Props) => {

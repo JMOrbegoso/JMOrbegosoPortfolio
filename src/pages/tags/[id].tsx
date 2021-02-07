@@ -8,7 +8,7 @@ import { getAuthorData, getAllPostsPreviews, getAllTags } from '../../lib/api';
 import PageHeader from '../../components/page-header';
 import Head from 'next/head';
 import { URL_BASE, WEB_NAME } from '../../lib/constants';
-import PostType from '../../types/post';
+import Project from '../../types/project';
 import Author from '../../types/author';
 import PostsList from '../../components/posts-list';
 import { getTagTitle } from '../../lib/tag-helpers';
@@ -18,7 +18,7 @@ import TranslationResource from '../../enums/translationResource';
 type Props = {
   author: Author;
   tagTitle: string;
-  posts: PostType[];
+  posts: Project[];
 };
 
 const Tag = ({ author, tagTitle, posts }: Props) => {
