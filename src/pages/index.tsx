@@ -11,7 +11,12 @@ import generateRssFeed from '../../scripts/generate-rss-feed';
 import generateSitemap from '../../scripts/generate-sitemap';
 import generateFavicons from '../../scripts/generate-favicons';
 import generateBlogCache from '../../scripts/generate-blog-cache';
+import markdownToHtml from '../lib/markdownToHtml';
+import ContactForm from '../components/contact-form';
+import LandingPage from '../components/landing-page';
 import useTranslation from 'next-translate/useTranslation';
+import TranslationResource from '../enums/translationResource';
+import AboutMe from '../components/about-me';
 
 type Props = {
   author: Author;
@@ -41,7 +46,22 @@ const Index = ({ author, projects }: Props) => {
           <meta property="og:description" content={WEB_DESCRIPTION} />
           <meta property="og:image" content={author.picture} />
         </Head>
-        <ProjectsList projects={projects} />
+        <section id="home" className="mb-5">
+          <LandingPage
+            title={t(TranslationResource.welcome_to_my_portfolio)}
+            subtitle={t(TranslationResource.welcome_to_my_portfolio)}
+            coverImage="/assets/portfolio/cover.png"
+          />
+        </section>
+        <section id="aboutme" className="mb-5">
+          <AboutMe authorContent={author.content} />
+        </section>
+        <section id="projects" className="mb-5">
+          <ProjectsList projects={projects} />
+        </section>
+        <section id="contact" className="mb-5">
+          <ContactForm />
+        </section>
       </Layout>
     </>
   );
@@ -63,11 +83,15 @@ export const getStaticProps = async ({ locale }: Params) => {
   await generateBlogCache();
 
   const author = getAuthorData(locale);
+  const authorContent = await markdownToHtml(author.content || '');
   const projects = getAllProjectsPreviews(locale);
 
   return {
     props: {
-      author,
+      author: {
+        ...author,
+        content: authorContent,
+      },
       projects,
     },
   };
