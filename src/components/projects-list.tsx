@@ -3,6 +3,7 @@ import Project from '../types/project';
 import Container from './container';
 import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../enums/translationResource';
+import { CardDeck } from 'react-bootstrap';
 
 type Props = {
   projects: Project[];
@@ -24,24 +25,20 @@ const ProjectsList = ({ projects }: Props) => {
   }
 
   return (
-    <section>
-      <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 mb-32">
-          {projects.map((project) => (
-            <ProjectPreview
-              key={project.slug}
-              title={project.title}
-              coverImage={project.coverImage}
-              date={project.date}
-              slug={project.slug}
-              excerpt={project.excerpt}
-              content={project.content}
-              tags={project.tags}
-            />
-          ))}
-        </div>
-      </Container>
-    </section>
+    <Container>
+      <CardDeck>
+        {projects.map((project) => (
+          <ProjectPreview
+            key={project.slug}
+            title={project.title}
+            excerpt={project.excerpt}
+            coverImage={project.coverImage}
+            slug={project.slug}
+            tags={project.tags}
+          />
+        ))}
+      </CardDeck>
+    </Container>
   );
 };
 
