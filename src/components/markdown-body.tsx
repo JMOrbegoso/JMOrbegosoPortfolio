@@ -5,7 +5,7 @@ type Props = {
   authorContent: string;
 };
 
-const AboutMe = ({ authorContent }: Props) => {
+const MarkdownBody = ({ authorContent }: Props) => {
   return (
     <Container>
       <div className="max-w-2xl mx-auto text-justify">
@@ -18,4 +18,4 @@ const AboutMe = ({ authorContent }: Props) => {
   );
 };
 
-export default AboutMe;
+export default MarkdownBody;

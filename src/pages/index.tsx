@@ -14,9 +14,9 @@ import generatePortfolioCache from '../../scripts/generate-portfolio-cache';
 import markdownToHtml from '../lib/markdownToHtml';
 import ContactForm from '../components/contact-form';
 import LandingPage from '../components/landing-page';
+import MarkdownBody from '../components/markdown-body';
 import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../enums/translationResource';
-import AboutMe from '../components/about-me';
 
 type Props = {
   author: Author;
@@ -54,7 +54,7 @@ const Index = ({ author, projects }: Props) => {
           />
         </section>
         <section id="aboutme" className="mb-5">
-          <AboutMe authorContent={author.content} />
+          <MarkdownBody authorContent={author.content} />
         </section>
         <section id="projects" className="mb-5">
           <ProjectsList projects={projects} />
