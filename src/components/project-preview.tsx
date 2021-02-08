@@ -13,7 +13,7 @@ type Props = {
 
 const ProjectPreview = ({ title, excerpt, coverImage, slug, tags }: Props) => {
   return (
-    <Card className="m-2">
+    <Card className="m-2" style={{ minWidth: 300 }}>
       <Link as={`/projects/${slug}`} href="/projects/[slug]">
         <a aria-label={title}>
           <Card.Img variant="top" src={coverImage} />
