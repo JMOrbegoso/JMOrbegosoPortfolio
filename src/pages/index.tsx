@@ -7,14 +7,15 @@ import Head from 'next/head';
 import { URL_BASE, WEB_NAME, WEB_DESCRIPTION } from '../lib/constants';
 import Project from '../types/project';
 import Author from '../types/author';
+import markdownToHtml from '../lib/markdownToHtml';
+import LandingPage from '../components/landing-page';
+import PageHeader from '../components/page-header';
+import MarkdownBody from '../components/markdown-body';
+import ContactForm from '../components/contact-form';
 import generateRssFeed from '../../scripts/generate-rss-feed';
 import generateSitemap from '../../scripts/generate-sitemap';
 import generateFavicons from '../../scripts/generate-favicons';
 import generatePortfolioCache from '../../scripts/generate-portfolio-cache';
-import markdownToHtml from '../lib/markdownToHtml';
-import ContactForm from '../components/contact-form';
-import LandingPage from '../components/landing-page';
-import MarkdownBody from '../components/markdown-body';
 import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../enums/translationResource';
 
@@ -54,12 +55,19 @@ const Index = ({ author, projects }: Props) => {
           />
         </section>
         <section id="aboutme" className="mb-5">
-          <MarkdownBody authorContent={author.content} />
+          <PageHeader>{t(TranslationResource.about)}</PageHeader>
+          <MarkdownBody authorContent={author.body} />
+        </section>
+        <section id="skills" className="mb-5">
+          <PageHeader>{t(TranslationResource.skills)}</PageHeader>
+          <MarkdownBody authorContent={author.skills} />
         </section>
         <section id="projects" className="mb-5">
+          <PageHeader>{t(TranslationResource.projects)}</PageHeader>
           <ProjectsList projects={projects} />
         </section>
         <section id="contact" className="mb-5">
+          <PageHeader>{t(TranslationResource.contact)}</PageHeader>
           <ContactForm />
         </section>
       </Layout>
@@ -83,14 +91,16 @@ export const getStaticProps = async ({ locale }: Params) => {
   await generatePortfolioCache();
 
   const author = getAuthorData(locale);
-  const authorContent = await markdownToHtml(author.content || '');
+  const authorBody = await markdownToHtml(author.body || '');
+  const authorSkills = await markdownToHtml(author.skills || '');
   const projects = getAllProjectsPreviews(locale);
 
   return {
     props: {
       author: {
         ...author,
-        content: authorContent,
+        body: authorBody,
+        skills: authorSkills,
       },
       projects,
     },
