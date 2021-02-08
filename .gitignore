@@ -44,5 +44,5 @@ yarn-error.log*
 # Favicon files
 /public/favicon/
 
-# Blog Cache
-/public/blog-cache/
+# Portfolio Cache
+/public/portfolio-cache/
