@@ -47,26 +47,31 @@ const Index = ({ author, projects }: Props) => {
           <meta property="og:description" content={WEB_DESCRIPTION} />
           <meta property="og:image" content={author.picture} />
         </Head>
-        <section id="home" className="mb-5">
+
+        <section id="home">
           <LandingPage
             title={t(TranslationResource.welcome_to_my_portfolio)}
             subtitle={t(TranslationResource.welcome_to_my_portfolio)}
             coverImage="/assets/portfolio/cover.png"
           />
         </section>
-        <section id="aboutme" className="mb-5">
+
+        <section id="aboutme" style={{ paddingTop: 25 }}>
           <PageHeader>{t(TranslationResource.about)}</PageHeader>
           <MarkdownBody authorContent={author.body} />
         </section>
-        <section id="skills" className="mb-5">
+
+        <section id="skills" style={{ paddingTop: 25 }}>
           <PageHeader>{t(TranslationResource.skills)}</PageHeader>
           <MarkdownBody authorContent={author.skills} />
         </section>
-        <section id="projects" className="mb-5">
+
+        <section id="projects" style={{ paddingTop: 25 }}>
           <PageHeader>{t(TranslationResource.projects)}</PageHeader>
           <ProjectsList projects={projects} />
         </section>
-        <section id="contact" className="mb-5">
+
+        <section id="contact" className="m-5">
           <PageHeader>{t(TranslationResource.contact)}</PageHeader>
           <ContactForm />
         </section>
