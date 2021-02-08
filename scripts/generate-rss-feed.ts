@@ -25,7 +25,7 @@ async function generateRssFeed() {
     id: baseUrl,
     link: baseUrl,
     language: 'en',
-    image: `${baseUrl}/assets/blog/logo.png`,
+    image: `${baseUrl}/assets/portfolio/logo.png`,
     favicon: `${baseUrl}/favicon/favicon.ico`,
     copyright: `All rights reserved ${COPYRIGHT}.`,
     feedLinks: {

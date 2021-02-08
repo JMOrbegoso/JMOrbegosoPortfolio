@@ -13,7 +13,7 @@ async function generateFavicons() {
 
   const author = getAuthor();
 
-  const source = 'public/assets/blog/logo.png'; // Source image(s). `string`, `buffer` or array of `string`
+  const source = 'public/assets/portfolio/logo.png'; // Source image(s). `string`, `buffer` or array of `string`
   const configuration: Partial<FaviconOptions> = {
     path: '/favicon/', // Path for overriding default icons path. `string`
     appName: WEB_NAME, // Your application's name. `string`
