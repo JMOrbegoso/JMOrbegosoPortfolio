@@ -3,7 +3,6 @@ import Container from './container';
 import { Button, Form } from 'react-bootstrap';
 import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../enums/translationResource';
-import PageHeader from './page-header';
 import ModalResult from './modal-result';
 
 type Props = {};
@@ -29,7 +28,6 @@ const ContactForm = ({}: Props) => {
   return (
     <>
       <Container>
-        <PageHeader>{t(TranslationResource.contact)}</PageHeader>
         <Form onSubmit={onFormSubmit}>
           <Form.Group>
             <Form.Label>{t(TranslationResource.email)}</Form.Label>
