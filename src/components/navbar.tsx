@@ -15,15 +15,12 @@ const NavBar = ({ title }: Props) => {
 
   return (
     <Navbar bg="primary" variant="dark" fixed="top" expand="lg">
-      <Link href="/" passHref>
+      <Link href="/#" passHref>
         <Navbar.Brand>{title}</Navbar.Brand>
       </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Link href="/#home" passHref>
-            <Nav.Link>{t(TranslationResource.home)}</Nav.Link>
-          </Link>
           <Link href="/#aboutme" passHref>
             <Nav.Link>{t(TranslationResource.about)}</Nav.Link>
           </Link>
