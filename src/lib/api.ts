@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { join } from 'path';
 import matter from 'gray-matter';
+import Author from '../types/author';
 import { getResourcesFileNames, localeDirectory } from './file-system-helpers';
 import { DirectoryType } from '../enums/directoryType';
 
@@ -140,12 +141,19 @@ export function getAllProjectsPreviews(locale: string) {
   ]);
 }
 
-export function getAuthorData(locale: string) {
-  const authorFileNames = getResourcesFileNames(DirectoryType.Author, locale);
-  const [aboutMeSlug] = authorFileNames.filter((fileName) =>
+export function getAuthorData(locale: string): Author {
+  const authorFiles = getResourcesFileNames(DirectoryType.Author, locale);
+  const [propertiesFile] = authorFiles.filter((fileName) =>
+    fileName.includes('properties'),
+  );
+  const [aboutMeFile] = authorFiles.filter((fileName) =>
     fileName.includes('about-me'),
   );
-  const aboutMeData = getAuthorBySlug(locale, aboutMeSlug, [
+  const [skillsFile] = authorFiles.filter((fileName) =>
+    fileName.includes('skills'),
+  );
+
+  const propertiesData = getAuthorBySlug(locale, propertiesFile, [
     'firstname',
     'lastname',
     'picture',
@@ -156,9 +164,24 @@ export function getAuthorData(locale: string) {
     'linkedin',
     'youtube',
     'instagram',
-    'content',
   ]);
-  return aboutMeData;
+  const aboutMeData = getAuthorBySlug(locale, aboutMeFile, ['content']);
+  const skillsData = getAuthorBySlug(locale, skillsFile, ['content']);
+
+  return {
+    firstname: propertiesData.firstname ?? '',
+    lastname: propertiesData.lastname ?? '',
+    picture: propertiesData.picture ?? '',
+    web: propertiesData.web ?? '',
+    facebook: propertiesData.facebook ?? '',
+    twitter: propertiesData.twitter ?? '',
+    github: propertiesData.github ?? '',
+    linkedin: propertiesData.linkedin ?? '',
+    youtube: propertiesData.youtube ?? '',
+    instagram: propertiesData.instagram ?? '',
+    body: aboutMeData.content ?? '',
+    skills: skillsData.content ?? '',
+  };
 }
 
 export function getAllTags(locale: string) {
