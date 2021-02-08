@@ -9,7 +9,8 @@ type Author = {
   linkedin: string;
   youtube: string;
   instagram: string;
-  content: string;
+  body: string;
+  skills: string;
 };
 
 export default Author;
