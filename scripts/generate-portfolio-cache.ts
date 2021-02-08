@@ -6,10 +6,10 @@ import {
 } from '../src/lib/file-system-helpers';
 import { mkdirSync } from 'fs';
 
-async function generateBlogCache() {
-  console.log('Generating blog cache…');
+async function generatePortfolioCache() {
+  console.log('Generating portfolio cache…');
 
-  generateBlogCacheFiles(DirectoryType.Projects, [
+  generatePortfolioCacheFiles(DirectoryType.Projects, [
     'slug',
     'title',
     'date',
@@ -20,7 +20,7 @@ async function generateBlogCache() {
     'tags',
   ]);
 
-  generateBlogCacheFiles(DirectoryType.Author, [
+  generatePortfolioCacheFiles(DirectoryType.Author, [
     'firstname',
     'lastname',
     'picture',
@@ -35,7 +35,7 @@ async function generateBlogCache() {
   ]);
 }
 
-const generateBlogCacheFiles = (
+const generatePortfolioCacheFiles = (
   directoryType: DirectoryType,
   fields: string[],
 ) => {
@@ -54,17 +54,17 @@ const generateBlogCacheFiles = (
     });
   });
 
-  writeBlogCacheFiles(directoryType, collection);
+  writePortfolioCacheFiles(directoryType, collection);
 };
 
-const writeBlogCacheFiles = (
+const writePortfolioCacheFiles = (
   directoryType: DirectoryType,
   collection: { locale: string; fileContent: string }[],
 ) => {
   const folderPath =
     directoryType === DirectoryType.Projects
-      ? './public/blog-cache/projects'
-      : './public/blog-cache/author';
+      ? './public/portfolio-cache/projects'
+      : './public/portfolio-cache/author';
 
   collection.forEach((element) => {
     mkdirSync(folderPath, { recursive: true });
@@ -75,4 +75,4 @@ const writeBlogCacheFiles = (
   });
 };
 
-export default generateBlogCache;
+export default generatePortfolioCache;
