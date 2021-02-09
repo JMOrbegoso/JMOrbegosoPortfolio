@@ -52,7 +52,7 @@ const Index = ({ author, projects }: Props) => {
           <LandingPage
             title={t(TranslationResource.welcome_to_my_portfolio)}
             subtitle={t(TranslationResource.welcome_to_my_portfolio)}
-            coverImage="/assets/portfolio/cover.png"
+            coverImage="/assets/portfolio/cover.jpg"
           />
         </section>
 

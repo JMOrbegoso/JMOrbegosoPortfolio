@@ -107,3 +107,5 @@ Remember to update the value of TABLE_OF_CONTENT_KEYWORDS of the Constants file 
 - [Tailwind CSS v2.0 no longer supports Node.js 8 or 10](https://tailwindcss.com/docs/upgrading-to-v2#upgrade-to-node-js-12-13-or-higher). To build your CSS you'll need to ensure you are running Node.js 12.13.0 or higher in both your local and CI environments.
 
 - Github found potential security vulnerabilities in the dependencies, that's because `favicons` package use `url-regex ` and `jpeg-js`, packages with potential security vulnerabilities, but there aren't problem with that because `favicons` just run in a script in the build process.
+
+- Cover image credits to RobloxHelp1231 from imgur.com.
