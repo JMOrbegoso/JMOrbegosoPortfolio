@@ -16,12 +16,12 @@ const LandingPage = ({ title, subtitle, coverImage }: Props) => {
         backgroundSize: 'cover',
       }}
     >
-      <h1 className="p-5 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter leading-tight md:leading-none my-8 md:my-12 text-center md:text-left">
+      <h1 className="pt-5 pb-4 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter leading-tight md:leading-none my-8 md:my-12 text-center md:text-left">
         {title}
       </h1>
 
       <p className="pb-5 text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter leading-tight md:leading-none my-8 md:my-12 text-center md:text-left">
-        {subtitle} - sadsad
+        {subtitle}
       </p>
     </Jumbotron>
   );
