@@ -13,7 +13,7 @@ const Layout = ({ author, children }: Props) => {
     <>
       <Meta />
       <NavBar />
-      <div className="min-h-screen">
+      <div className="min-h-screen" style={{ paddingTop: 25 }}>
         <main>{children}</main>
       </div>
       <Footer author={author} />
