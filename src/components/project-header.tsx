@@ -1,5 +1,4 @@
 import Avatar from './avatar';
-import DateFormatter from './date-formatter';
 import CoverImage from './cover-image';
 import PageHeader from './page-header';
 import Author from '../types/author';
@@ -33,13 +32,6 @@ const ProjectHeader = ({ title, coverImage, date, content, author }: Props) => {
             picture={author.picture}
             web={author.web}
           />
-        </div>
-        <div className="mb-6 text-lg">
-          <div className="row">
-            <div className="col-6 text-left">
-              <DateFormatter dateString={date} />
-            </div>
-          </div>
         </div>
       </div>
     </>
