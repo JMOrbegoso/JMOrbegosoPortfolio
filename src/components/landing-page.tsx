@@ -9,16 +9,20 @@ type Props = {
 const LandingPage = ({ title, subtitle, coverImage }: Props) => {
   return (
     <Jumbotron
+      className="text-white"
       style={{
         backgroundImage: `url(${coverImage})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
       }}
     >
-      <div className="p-5">
-        <h1>{title}</h1>
-        <p>{subtitle}</p>
-      </div>
+      <h1 className="p-5 text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter leading-tight md:leading-none my-8 md:my-12 text-center md:text-left">
+        {title}
+      </h1>
+
+      <p className="pb-5 text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tighter leading-tight md:leading-none my-8 md:my-12 text-center md:text-left">
+        {subtitle} - sadsad
+      </p>
     </Jumbotron>
   );
 };
