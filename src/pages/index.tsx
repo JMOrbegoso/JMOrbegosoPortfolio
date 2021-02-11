@@ -71,7 +71,7 @@ const Index = ({ author, projects }: Props) => {
           <ProjectsList projects={projects} />
         </section>
 
-        <section id="contact" className="m-5">
+        <section id="contact" style={{ paddingTop: 25 }} className="mb-5">
           <PageHeader>{t(TranslationResource.contact)}</PageHeader>
           <ContactForm />
         </section>
