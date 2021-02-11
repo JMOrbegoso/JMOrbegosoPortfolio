@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, Row, Col, Container } from 'react-bootstrap';
+import { Container, Button, Form, Row, Col } from 'react-bootstrap';
 import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../enums/translationResource';
 import ModalResult from './modal-result';
@@ -17,9 +17,16 @@ const ContactForm = ({}: Props) => {
   const [modalShow, setModalShow] = React.useState(false);
   const [modalTypeShow, setModalTypeShow] = React.useState(false);
 
-  const onFormSubmit = (e: any) => {
+  const onFormSubmit = async (e: any) => {
     e.preventDefault();
 
+    await fetch('/api/send-contact-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ firstName, lastName, email, message }),
+    });
+
+    setModalTypeShow(true);
     setModalShow(true);
 
     setFirstName('');
