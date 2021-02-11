@@ -1,7 +1,8 @@
-import { getResourceByFileName } from '../src/lib/api';
+import { getAllProjects, getAuthorData } from '../src/lib/api';
 import { DirectoryType } from '../src/enums/directoryType';
 import {
-  getfileNamesByLocale,
+  rootDirectory,
+  getSubDirectories,
   writeFile,
 } from '../src/lib/file-system-helpers';
 import { mkdirSync } from 'fs';
@@ -9,48 +10,41 @@ import { mkdirSync } from 'fs';
 async function generatePortfolioCache() {
   console.log('Generating portfolio cache…');
 
-  generatePortfolioCacheFiles(DirectoryType.Projects, [
-    'slug',
-    'title',
-    'date',
-    'coverImage',
-    'excerpt',
-    'ogImage',
-    'content',
-    'tags',
-  ]);
-
-  generatePortfolioCacheFiles(DirectoryType.Author, [
-    'firstname',
-    'lastname',
-    'picture',
-    'web',
-    'facebook',
-    'twitter',
-    'github',
-    'linkedin',
-    'youtube',
-    'instagram',
-    'content',
-  ]);
+  generatePortfolioCacheFiles(DirectoryType.Projects);
+  generatePortfolioCacheFiles(DirectoryType.Author);
 }
 
-const generatePortfolioCacheFiles = (
-  directoryType: DirectoryType,
-  fields: string[],
-) => {
-  const filePaths = getfileNamesByLocale(directoryType);
+const generatePortfolioCacheFiles = (directoryType: DirectoryType) => {
+  const collection: { locale: string; fileContent: string }[] = [];
 
-  let collection: { locale: string; fileContent: string }[] = [];
+  const subDirectories = getSubDirectories(rootDirectory(directoryType));
 
-  filePaths.forEach((dir) => {
-    const element = dir.fileNames.map((fileName) =>
-      getResourceByFileName(directoryType, dir.locale, fileName, fields),
-    );
+  subDirectories.forEach((locale) => {
+    var element: string;
+
+    switch (directoryType) {
+      case DirectoryType.Projects:
+        const projects = getAllProjects(locale, [
+          'slug',
+          'title',
+          'date',
+          'coverImage',
+          'excerpt',
+          'ogImage',
+          'content',
+          'tags',
+        ]);
+        element = JSON.parse(JSON.stringify(projects));
+        break;
+      case DirectoryType.Author:
+        const author = getAuthorData(locale);
+        element = JSON.parse(JSON.stringify(author));
+        break;
+    }
 
     collection.push({
-      locale: dir.locale,
-      fileContent: JSON.parse(JSON.stringify(element)),
+      locale,
+      fileContent: element,
     });
   });
 
