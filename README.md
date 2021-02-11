@@ -16,7 +16,6 @@ To create the portfolio projects we use [`remark`](https://github.com/remarkjs/r
 - Multi-language support.
 - Projects with tags.
 - Tags with SVG image files.
-- Pagination.
 - React Bootstrap.
 - Share project menu (Twitter, Facebook, Telegram, LikedIn).
 - RSS Feeds.
