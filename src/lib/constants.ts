@@ -11,3 +11,4 @@ export const WEB_DESCRIPTION = `A developer's portfolio.`;
 export const CREDITS = 'JM Orbegoso';
 export const COPYRIGHT = `© ${new Date().getFullYear()} JM Orbegoso`;
 export const TABLE_OF_CONTENT_KEYWORDS = ['Index', 'Índice'];
+export const CONTACT_EMAIL_SUBJECT = 'Portfolio - Contact';
