@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Container from './container';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Row, Col, Container } from 'react-bootstrap';
 import useTranslation from 'next-translate/useTranslation';
 import TranslationResource from '../enums/translationResource';
 import ModalResult from './modal-result';
@@ -10,6 +9,8 @@ type Props = {};
 const ContactForm = ({}: Props) => {
   const { t, lang } = useTranslation('common');
 
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
@@ -18,17 +19,44 @@ const ContactForm = ({}: Props) => {
 
   const onFormSubmit = (e: any) => {
     e.preventDefault();
-    console.log('email', email);
-    console.log('message', message);
 
-    setModalTypeShow(true);
     setModalShow(true);
+
+    setFirstName('');
+    setLastName('');
+    setEmail('');
+    setMessage('');
   };
 
   return (
     <>
       <Container>
         <Form onSubmit={onFormSubmit}>
+          <Row>
+            <Col>
+              <Form.Group>
+                <Form.Label>{t(TranslationResource.first_name)}</Form.Label>
+                <Form.Control
+                  type="fname"
+                  placeholder={t(TranslationResource.first_name_placeholder)}
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group>
+                <Form.Label>{t(TranslationResource.last_name)}</Form.Label>
+                <Form.Control
+                  type="lname"
+                  placeholder={t(TranslationResource.last_name_placeholder)}
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </Form.Group>
+            </Col>
+          </Row>
+
           <Form.Group>
             <Form.Label>{t(TranslationResource.email)}</Form.Label>
             <Form.Control
@@ -42,16 +70,24 @@ const ContactForm = ({}: Props) => {
           <Form.Group>
             <Form.Label>{t(TranslationResource.message)}</Form.Label>
             <Form.Control
-              type="message"
+              type="text"
+              as="textarea"
+              style={{ minHeight: 200 }}
               placeholder={t(TranslationResource.message_placeholder)}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
-            {t(TranslationResource.submit)}
-          </Button>
+          <Container style={{ textAlign: 'center' }}>
+            <Button
+              variant="primary"
+              type="submit"
+              style={{ minWidth: '30vw' }}
+            >
+              {t(TranslationResource.submit)}
+            </Button>
+          </Container>
         </Form>
         <ModalResult
           title={
