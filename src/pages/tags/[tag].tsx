@@ -83,7 +83,7 @@ export default Tag;
 
 type Params = {
   params: {
-    id: string;
+    tag: string;
     page: number;
   };
   locales: string[];
@@ -94,10 +94,10 @@ type Params = {
 export const getStaticProps = async ({ params, locale }: Params) => {
   const author = getAuthorData(locale);
   const projects = getAllProjectsPreviews(locale).filter((p) =>
-    p.tags.includes(params.id),
+    p.tags.includes(params.tag),
   );
 
-  const tagTitle = getTagTitle(params.id);
+  const tagTitle = getTagTitle(params.tag);
 
   return {
     props: {
@@ -109,7 +109,7 @@ export const getStaticProps = async ({ params, locale }: Params) => {
 };
 
 export async function getStaticPaths({ locales }: { locales: string[] }) {
-  const paths: { locale: string; params: { id: string } }[] = [];
+  const paths: { locale: string; params: { tag: string } }[] = [];
 
   locales.forEach((locale) => {
     const allTags = getAllTags(locale);
@@ -126,7 +126,7 @@ export async function getStaticPaths({ locales }: { locales: string[] }) {
       return {
         locale: pt.locale,
         params: {
-          id: pt.tag,
+          tag: pt.tag,
         },
       };
     });
