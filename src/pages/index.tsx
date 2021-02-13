@@ -1,15 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import ProjectsList from '../components/projects-list';
-import Layout from '../components/layout';
-import { getAuthorData, getAllProjectsPreviews } from '../lib/api';
+import { getAuthorData, getAllTags, getAllProjectsPreviews } from '../lib/api';
 import Head from 'next/head';
 import { URL_BASE, WEB_NAME, WEB_DESCRIPTION } from '../lib/constants';
 import Project from '../types/project';
 import Author from '../types/author';
+import { Tag } from '../enums/tag';
 import markdownToHtml from '../lib/markdownToHtml';
-import LandingPage from '../components/landing-page';
 import PageHeader from '../components/page-header';
+import Layout from '../components/layout';
+import LandingPage from '../components/landing-page';
+import ProjectTags from '../components/project-tags';
+import ProjectsList from '../components/projects-list';
 import MarkdownBody from '../components/markdown-body';
 import ContactForm from '../components/contact-form';
 import generateRssFeed from '../../scripts/generate-rss-feed';
@@ -21,10 +23,11 @@ import TranslationResource from '../enums/translationResource';
 
 type Props = {
   author: Author;
+  tags: Tag[];
   projects: Project[];
 };
 
-const Index = ({ author, projects }: Props) => {
+const Index = ({ author, tags, projects }: Props) => {
   const { t, lang } = useTranslation('common');
 
   return (
@@ -64,6 +67,7 @@ const Index = ({ author, projects }: Props) => {
         <section id="skills" style={{ paddingTop: 25 }}>
           <PageHeader>{t(TranslationResource.skills)}</PageHeader>
           <MarkdownBody authorContent={author.skills} />
+          <ProjectTags tags={tags} />
         </section>
 
         <section id="projects" style={{ paddingTop: 25 }}>
@@ -98,6 +102,7 @@ export const getStaticProps = async ({ locale }: Params) => {
   const author = getAuthorData(locale);
   const authorBody = await markdownToHtml(author.body || '');
   const authorSkills = await markdownToHtml(author.skills || '');
+  const tags = getAllTags(locale);
   const projects = getAllProjectsPreviews(locale);
 
   return {
@@ -107,6 +112,7 @@ export const getStaticProps = async ({ locale }: Params) => {
         body: authorBody,
         skills: authorSkills,
       },
+      tags,
       projects,
     },
   };
