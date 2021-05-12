@@ -7,7 +7,7 @@ import ModalResult from './modal-result';
 type Props = {};
 
 const ContactForm = ({}: Props) => {
-  const { t, lang } = useTranslation('common');
+  const { t } = useTranslation('common');
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -86,7 +86,7 @@ const ContactForm = ({}: Props) => {
             />
           </Form.Group>
 
-          <Container style={{ textAlign: 'center' }}>
+          <Container className="mt-3" style={{ textAlign: 'center' }}>
             <Button
               variant="primary"
               type="submit"
